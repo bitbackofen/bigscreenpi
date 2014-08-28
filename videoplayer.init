@@ -1,0 +1,32 @@
+#! /bin/sh
+# /etc/init.d/videoplayer
+
+### BEGIN INIT INFO
+# Provides:          videoplayer
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Videoplayer to play a vidoe in loop
+# Description:       See https://github.com/Chaosbit/bigscreenpi for more info.
+### END INIT INFO
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+    echo "Starting videoplayer"
+    # run application you want to start
+    /root/bigscreenpi/videoplayer.sh
+    ;;
+  stop)
+    echo "Stopping videoplayer"
+    # kill application you want to stop
+    killall videoplayer.sh omxplayer
+    ;;
+  *)
+    echo "Usage: /etc/init.d/videoplayer {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
