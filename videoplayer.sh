@@ -9,7 +9,7 @@ LOG='video.log'
 
 PAUSENVIDEO=/home/pi/video/SNR_Pausenstueck_1min.mp4
 #Extra Zeit zur Videolaenge
-EXTRATIME=1
+EXTRATIME=3
 
 setterm -blank off -powerdown off > /dev/tty0
 clear > /dev/tty0
@@ -33,7 +33,8 @@ set -- $var
 			then	
 				#omxplayer killen
 				echo 'running' >> video.log
-				killall omxplayer
+				killall omxplayer > /dev/null
+				killall omxplayer.bin > /dev/null
 			else
 				echo 'ok' >> video.log
 	fi
