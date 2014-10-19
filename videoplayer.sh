@@ -18,7 +18,7 @@ setterm -cursor off > /dev/tty0
 #Funktion zum Abspielen der Videos
 playvideo() {
 	#Laenge Video ermitteln
-	string=$(omxplayer --info $VIDEO 2>&1 | sed -nr 's/.*(Duration:) ([0123456789:]+).*/\1\2/p')
+	string=$($PLAYER --info $VIDEO 2>&1 | sed -nr 's/.*(Duration:) ([0123456789:]+).*/\1\2/p')
 var=$(echo $string | awk -F":" '{print $1,$2,$3,$4}')
 set -- $var
 	#Sekunden für das Video berechnen	
@@ -33,7 +33,7 @@ set -- $var
 			then	
 				#omxplayer killen
 				echo 'running' >> video.log
-				killall omxplayer > /dev/null
+				killall $PLAYER > /dev/null
 				killall omxplayer.bin > /dev/null
 			else
 				echo 'ok' >> video.log
