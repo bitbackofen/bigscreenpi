@@ -3,7 +3,7 @@
 PLAYER=omxplayer
 OPTIONS='-rb --no-osd -o hdmi'
 
-#Hier leigen die Videos
+#Hier liegen die Videos
 VIDEOPATH=/home/pi/video/
 LOG='video.log'
 
