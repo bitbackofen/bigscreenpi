@@ -29,14 +29,14 @@ set -- $var
 	#echo $!
 	sleep $waittime
 	#Checken ob noch ein omxplayer prozess laeuft
-	if ps ax | grep -v grep | grep omxplayer > /dev/null
+	if ps ax | grep -v grep | grep $PLAYER > /dev/null
 			then	
 				#omxplayer killen
-				echo 'running' >> video.log
-				killall $PLAYER > /dev/null
-				killall omxplayer.bin > /dev/null
+				echo 'still running; killing proc' >> $LOG
+				killall -I $PLAYER > /dev/null
+				killall -I $PLAYER.bin > /dev/null
 			else
-				echo 'ok' >> video.log
+				echo 'ok' >> $LOG
 	fi
 	clear > /dev/tty0
 }
