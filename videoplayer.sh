@@ -4,10 +4,10 @@ PLAYER=omxplayer
 OPTIONS='-rb --no-osd -o hdmi'
 
 #Hier liegen die Videos
-VIDEOPATH=/home/pi/video/
-LOG='video.log'
+VIDEOPATH=/var/video
+LOG='/var/log/video.log'
 
-PAUSENVIDEO=/home/pi/video/SNR_Pausenstueck_1min.mp4
+PAUSENVIDEO=/var/video/SNR_Pausenstueck_1min.mp4
 #Extra Zeit zur Videolaenge
 EXTRATIME=3
 
@@ -44,7 +44,7 @@ set -- $var
 #Tu Videos abspielen
 while :
 do
-	for file in $VIDEOPATH*1.mp4; do
+	for file in $VIDEOPATH/active*.mkv; do
 		
 		VIDEO=$file
 		playvideo
